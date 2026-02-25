@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>My Legal Earning App — Coins Kamao</title>
+<meta name="description" content="My Legal Earning App - Roz coins kamao, daily bonus lo, aur withdraw karo. India ka best legal earning platform."/>
+
+<!-- ══════════════════════════════════════════════════
+     GOOGLE ADSENSE — Apna Publisher ID yahan lagao
+     ca-pub-XXXXXXXXXXXXXXXX ki jagah apna ID daalo
+     AdSense approve hone ke baad yeh activate hoga
+══════════════════════════════════════════════════ -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg:#080a0f; --s1:#0f1218; --s2:#171c26; --s3:#1e2433;
+  --bd:#252d3d; --bd2:#2e3850;
+  --gold:#f0c040; --gold2:#c49010; --gg:rgba(240,192,64,0.15);
+  --green:#1fd88a; --red:#ff5c5c; --blue:#4d8fff;
+  --txt:#dde3f0; --m1:#6b7896; --m2:#8a95b0;
+  --r:16px; --rs:10px;
+  --sh:0 12px 40px rgba(0,0,0,0.55);
+  --tr:0.2s cubic-bezier(.4,0,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--txt);min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+h1,h2,h3,h4{font-family:'Syne',sans-serif;font-weight:700;line-height:1.2;}
+a{color:var(--gold);text-decoration:none;}
+
+/* BG */
+.bg-wrap{position:fixed;inset:0;pointer-events:none;z-index:0;}
+.bg-wrap::before{content:'';position:absolute;width:700px;height:700px;top:-200px;right:-200px;background:radial-gradient(circle,rgba(240,192,64,0.07) 0%,transparent 65%);animation:drift1 14s ease-in-out infinite alternate;}
+.bg-wrap::after{content:'';position:absolute;width:600px;height:600px;bottom:-150px;left:-150px;background:radial-gradient(circle,rgba(77,143,255,0.05) 0%,transparent 65%);animation:drift2 16s ease-in-out infinite alternate;}
+.bg-grid{position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(255,255,255,0.013) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.013) 1px,transparent 1px);background-size:40px 40px;}
+@keyframes drift1{from{transform:translate(0,0) scale(1);}to{transform:translate(-50px,35px) scale(1.1);}}
+@keyframes drift2{from{transform:translate(0,0) scale(1);}to{transform:translate(35px,-50px) scale(1.12);}}
+
+/* SCREENS */
+.screen{position:relative;z-index:1;min-height:100vh;}
+.screen.hidden{display:none!important;}
+
+/* AUTH */
+#authScreen{display:flex;align-items:center;justify-content:center;padding:24px 16px;}
+.auth-card{width:100%;max-width:440px;background:var(--s1);border:1px solid var(--bd);border-radius:var(--r);padding:40px 36px;box-shadow:var(--sh);animation:fadeUp .4s ease both;position:relative;overflow:hidden;}
+.auth-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+.brand{display:flex;align-items:center;gap:12px;margin-bottom:32px;}
+.brand-ico{width:46px;height:46px;background:linear-gradient(135deg,var(--gold),var(--gold2));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 18px rgba(240,192,64,0.35);flex-shrink:0;}
+.brand-name{font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;line-height:1.3;}
+.brand-tag{font-size:0.72rem;color:var(--m1);margin-top:2px;}
+.auth-title{font-size:1.65rem;margin-bottom:6px;}
+.auth-sub{color:var(--m1);font-size:0.88rem;margin-bottom:26px;}
+
+/* FORM */
+.fgrp{margin-bottom:14px;}
+.fgrp label{display:block;font-size:0.74rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--m2);margin-bottom:7px;}
+.fgrp input{width:100%;background:var(--s2);border:1px solid var(--bd);border-radius:var(--rs);padding:13px 15px;color:var(--txt);font-family:'DM Sans',sans-serif;font-size:.93rem;transition:border-color var(--tr),box-shadow var(--tr),background var(--tr);outline:none;-webkit-appearance:none;}
+.fgrp input:focus{border-color:var(--gold);background:var(--s3);box-shadow:0 0 0 3px var(--gg);}
+.fgrp input::placeholder{color:var(--m1);}
+.fgrp input.ucase{text-transform:uppercase;letter-spacing:.1em;}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 20px;border-radius:var(--rs);font-family:'DM Sans',sans-serif;font-size:.93rem;font-weight:600;cursor:pointer;border:none;transition:all var(--tr);width:100%;margin-top:6px;position:relative;overflow:hidden;letter-spacing:.01em;}
+.btn:active{transform:scale(.975);}
+.btn:disabled{opacity:.4;cursor:not-allowed;pointer-events:none;}
+.btn-gold{background:linear-gradient(135deg,var(--gold) 0%,#e0a820 100%);color:#0a0c10;font-weight:700;box-shadow:0 4px 20px rgba(240,192,64,.3);}
+.btn-gold:hover{box-shadow:0 6px 28px rgba(240,192,64,.45);filter:brightness(1.06);}
+.btn-ghost{background:var(--s2);color:var(--txt);border:1px solid var(--bd);}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold);}
+.btn-green{background:linear-gradient(135deg,#1fd88a 0%,#14b870 100%);color:#050d08;font-weight:700;box-shadow:0 4px 16px rgba(31,216,138,.25);}
+.btn-green:hover{box-shadow:0 6px 24px rgba(31,216,138,.38);filter:brightness(1.05);}
+.btn-red{background:linear-gradient(135deg,#ff5c5c 0%,#d93a3a 100%);color:#fff;font-weight:700;}
+.btn-sm{width:auto;padding:8px 15px;font-size:.81rem;margin-top:0;}
+
+/* ALERT */
+.alert{padding:11px 14px;border-radius:var(--rs);font-size:.85rem;margin-bottom:14px;display:none;line-height:1.5;}
+.alert.show{display:flex;align-items:flex-start;gap:7px;}
+.a-err{background:rgba(255,92,92,.1);border:1px solid rgba(255,92,92,.25);color:#ff9a9a;}
+.a-ok{background:rgba(31,216,138,.1);border:1px solid rgba(31,216,138,.25);color:#7fffcb;}
+.sw-link{text-align:center;margin-top:20px;font-size:.85rem;color:var(--m1);}
+.sw-link a{color:var(--gold);font-weight:500;}
+
+/* TOAST */
+#toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(70px);background:var(--s3);border:1px solid var(--bd2);color:var(--txt);padding:12px 22px;border-radius:40px;font-size:.85rem;font-weight:500;z-index:9999;transition:transform .32s cubic-bezier(.4,0,.2,1),opacity .32s;opacity:0;pointer-events:none;white-space:nowrap;box-shadow:0 8px 30px rgba(0,0,0,.4);}
+#toast.show{transform:translateX(-50%) translateY(0);opacity:1;}
+
+/* DASHBOARD */
+#dashScreen{display:flex;flex-direction:column;}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:rgba(15,18,24,.96);border-bottom:1px solid var(--bd);position:sticky;top:0;z-index:200;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);}
+.tb-brand{display:flex;align-items:center;gap:10px;}
+.tb-brand .brand-ico{width:34px;height:34px;border-radius:9px;font-size:17px;}
+.tb-brand .brand-name{font-size:.9rem;}
+.tb-right{display:flex;gap:8px;align-items:center;}
+.npill{padding:7px 14px;border-radius:40px;background:var(--s2);border:1px solid var(--bd);color:var(--m2);font-family:'DM Sans',sans-serif;font-size:.79rem;font-weight:500;cursor:pointer;transition:all var(--tr);}
+.npill:hover{border-color:var(--gold);color:var(--gold);}
+.npill.active{background:var(--gold);color:#0a0c10;border-color:var(--gold);font-weight:700;}
+.dash-body{flex:1;padding:22px 16px 50px;max-width:720px;width:100%;margin:0 auto;}
+
+/* LOADING */
+#loadDiv{text-align:center;padding:80px 0;}
+.ring{width:36px;height:36px;border:3px solid var(--bd2);border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 14px;}
+
+/* BALANCE CARD */
+.bal-card{background:linear-gradient(145deg,#141926 0%,#0f1218 60%,#161c2a 100%);border:1px solid var(--bd);border-radius:var(--r);padding:26px 24px 22px;margin-bottom:16px;position:relative;overflow:hidden;box-shadow:var(--sh);}
+.bal-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+.bal-card::after{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:radial-gradient(circle,rgba(240,192,64,.1) 0%,transparent 65%);pointer-events:none;}
+.bal-lbl{font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;color:var(--m1);margin-bottom:10px;font-weight:600;}
+.bal-amt{font-family:'Syne',sans-serif;font-size:3rem;font-weight:800;color:var(--gold);line-height:1;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.bal-ico{font-size:2.3rem;}
+.bal-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.bal-usr{font-size:.86rem;color:var(--m1);}
+.bal-usr strong{color:var(--txt);}
+.bal-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(240,192,64,.1);border:1px solid rgba(240,192,64,.2);color:var(--gold);font-size:.74rem;font-weight:600;padding:4px 11px;border-radius:40px;}
+
+/* ══════════════════════════════════════════
+   AD BANNER CONTAINER STYLES
+══════════════════════════════════════════ */
+.ad-container {
+  background: var(--s1);
+  border: 1px dashed var(--bd2);
+  border-radius: var(--rs);
+  padding: 8px;
+  margin-bottom: 16px;
+  text-align: center;
+  overflow: hidden;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ad-container-banner {
+  /* Horizontal banner — 320x50 or 728x90 */
+  min-height: 60px;
+  width: 100%;
+}
+
+.ad-container-rect {
+  /* Rectangle ad — 300x250 */
+  min-height: 250px;
+  width: 100%;
+  max-width: 336px;
+  margin: 0 auto 16px;
+}
+
+.ad-label {
+  font-size: 0.65rem;
+  color: var(--m1);
+  text-align: center;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* TABS */
+.tab-bar{display:flex;gap:5px;background:var(--s1);border:1px solid var(--bd);border-radius:var(--rs);padding:5px;margin-bottom:18px;}
+.tpill{flex:1;padding:10px 6px;border-radius:7px;background:transparent;border:none;color:var(--m1);cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.81rem;font-weight:500;transition:all var(--tr);}
+.tpill:hover{color:var(--txt);}
+.tpill.active{background:var(--gold);color:#0a0c10;font-weight:700;}
+.tsec{display:none;}
+.tsec.show{display:block;animation:fadeUp .28s ease both;}
+
+/* EARN CARDS */
+.earn-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-bottom:14px;}
+.ecard{background:var(--s1);border:1px solid var(--bd);border-radius:var(--r);padding:22px 18px;transition:border-color var(--tr),transform var(--tr),box-shadow var(--tr);}
+.ecard:hover{border-color:var(--bd2);transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,.3);}
+.ec-ico{font-size:2rem;margin-bottom:12px;display:block;}
+.ec-ttl{font-family:'Syne',sans-serif;font-size:.93rem;margin-bottom:4px;}
+.ec-dsc{font-size:.78rem;color:var(--m1);margin-bottom:12px;line-height:1.5;}
+.coin-chip{display:inline-flex;align-items:center;gap:4px;background:rgba(240,192,64,.1);border:1px solid rgba(240,192,64,.2);color:var(--gold);font-size:.76rem;font-weight:700;padding:4px 10px;border-radius:40px;margin-bottom:13px;}
+
+/* REF CARD */
+.ref-card{background:var(--s1);border:1px solid var(--bd);border-radius:var(--r);padding:22px;margin-bottom:13px;}
+.sec-ttl{font-size:.97rem;margin-bottom:4px;}
+.sec-sub{font-size:.8rem;color:var(--m1);margin-bottom:14px;line-height:1.55;}
+.ref-row{display:flex;align-items:center;gap:10px;}
+.ref-box{flex:1;background:var(--s2);border:1px solid var(--bd);border-radius:var(--rs);padding:13px 16px;font-family:'Syne',sans-serif;font-weight:800;font-size:1.08rem;letter-spacing:.14em;color:var(--gold);}
+.how-card{background:var(--s1);border:1px solid var(--bd);border-radius:var(--r);padding:20px 22px;}
+.how-step{display:flex;align-items:flex-start;gap:14px;padding:10px 0;border-bottom:1px solid var(--bd);}
+.how-step:last-child{border-bottom:none;padding-bottom:0;}
+.how-num{width:28px;height:28px;background:var(--s2);border:1px solid var(--bd2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:.76rem;font-weight:800;color:var(--gold);flex-shrink:0;margin-top:1px;}
+.ht{font-size:.87rem;font-weight:600;margin-bottom:2px;}
+.hs{font-size:.78rem;color:var(--m1);}
+
+/* WITHDRAW */
+.w-card{background:var(--s1);border:1px solid var(--bd);border-radius:var(--r);padding:22px;margin-bottom:16px;}
+.min-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(77,143,255,.1);border:1px solid rgba(77,143,255,.2);color:#7aadff;font-size:.76rem;font-weight:600;padding:4px 11px;border-radius:40px;margin-bottom:16px;}
+
+/* HISTORY */
+.hist-list{background:var(--s1);border:1px solid var(--bd);border-radius:var(--r);overflow:hidden;margin-bottom:14px;}
+.hi{display:flex;align-items:center;gap:12px;padding:13px 15px;border-bottom:1px solid var(--bd);transition:background var(--tr);}
+.hi:hover{background:rgba(255,255,255,.02);}
+.hi:last-child{border-bottom:none;}
+.h-ico{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.ig{background:rgba(240,192,64,.12);}
+.iv{background:rgba(31,216,138,.12);}
+.ir{background:rgba(255,92,92,.12);}
+.h-meta{flex:1;min-width:0;}
+.h-ttl{font-size:.86rem;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.h-dt{font-size:.74rem;color:var(--m1);margin-top:2px;}
+.h-amt{font-family:'Syne',sans-serif;font-weight:700;font-size:.91rem;white-space:nowrap;}
+.h-amt.plus{color:var(--green);}
+.h-amt.minus{color:var(--red);}
+.empty{text-align:center;padding:38px 20px;color:var(--m1);font-size:.84rem;}
+.empty-ico{font-size:2.6rem;margin-bottom:12px;display:block;}
+
+/* ADMIN */
+.admin-wrap{display:none;}
+.admin-wrap.show{display:block;animation:fadeUp .28s ease both;}
+.adm-hdr{display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap;}
+.tbl-wrap{background:var(--s1);border:1px solid var(--bd);border-radius:var(--r);overflow:auto;margin-bottom:24px;}
+table{width:100%;border-collapse:collapse;font-size:.82rem;min-width:460px;}
+th{background:var(--s2);color:var(--m1);font-weight:600;font-size:.71rem;text-transform:uppercase;letter-spacing:.08em;padding:11px 13px;text-align:left;border-bottom:1px solid var(--bd);}
+td{padding:12px 13px;border-bottom:1px solid var(--bd);color:var(--txt);vertical-align:middle;}
+tr:last-child td{border-bottom:none;}
+tr:hover td{background:rgba(255,255,255,.015);}
+.badge{display:inline-flex;padding:3px 10px;border-radius:40px;font-size:.72rem;font-weight:700;}
+.bp{background:rgba(240,192,64,.12);color:var(--gold);}
+.ba{background:rgba(31,216,138,.12);color:var(--green);}
+.br{background:rgba(255,92,92,.12);color:var(--red);}
+
+/* AD OVERLAY (Simulated for non-AdSense fallback) */
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.82);backdrop-filter:blur(7px);z-index:8000;align-items:center;justify-content:center;}
+.overlay.show{display:flex;}
+.ad-box{background:var(--s1);border:1px solid var(--bd2);border-radius:var(--r);padding:36px 28px 28px;max-width:360px;width:90%;text-align:center;animation:fadeUp .3s ease both;box-shadow:var(--sh);position:relative;overflow:hidden;}
+.ad-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+.ad-em{font-size:3rem;display:block;margin-bottom:14px;}
+.ad-ttl{font-size:1.1rem;margin-bottom:8px;}
+.ad-dsc{font-size:.83rem;color:var(--m1);margin-bottom:22px;line-height:1.55;}
+.ad-timer{font-family:'Syne',sans-serif;font-size:2.8rem;font-weight:800;color:var(--gold);margin-bottom:12px;}
+.ad-track{height:5px;background:var(--bd);border-radius:5px;margin-bottom:22px;overflow:hidden;}
+.ad-bar{height:100%;background:var(--gold);border-radius:5px;width:0;transition:width 1s linear;}
+
+/* Inside ad overlay — real AdSense ad */
+.ad-real-slot {
+  background: var(--s2);
+  border: 1px solid var(--bd);
+  border-radius: var(--rs);
+  padding: 8px;
+  margin-bottom: 16px;
+  min-height: 100px;
+}
+
+/* FOOTER */
+.footer{text-align:center;padding:24px 16px;border-top:1px solid var(--bd);font-size:.76rem;color:var(--m1);margin-top:20px;}
+.footer a{color:var(--m2);margin:0 8px;}
+.footer a:hover{color:var(--gold);}
+
+/* POLICY PAGE */
+.policy-page{display:none;position:fixed;inset:0;background:var(--bg);z-index:5000;overflow-y:auto;padding:30px 20px;}
+.policy-page.show{display:block;}
+.policy-content{max-width:680px;margin:0 auto;}
+.policy-content h1{font-size:1.6rem;margin-bottom:8px;}
+.policy-content h2{font-size:1.1rem;margin:24px 0 8px;color:var(--gold);}
+.policy-content p{font-size:.87rem;color:var(--m2);line-height:1.7;margin-bottom:12px;}
+.policy-content ul{padding-left:20px;margin-bottom:12px;}
+.policy-content ul li{font-size:.87rem;color:var(--m2);line-height:1.7;margin-bottom:6px;}
+
+/* SPINNER */
+.sp{width:16px;height:16px;border:2px solid rgba(0,0,0,.22);border-top-color:#0a0c10;border-radius:50%;display:inline-block;animation:spin .7s linear infinite;}
+.sub-h{font-size:.9rem;font-weight:700;margin-bottom:10px;margin-top:4px;color:var(--m2);}
+hr{border:none;border-top:1px solid var(--bd);margin:16px 0;}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+@keyframes spin{to{transform:rotate(360deg);}}
+@keyframes coinPop{0%{transform:scale(1);}40%{transform:scale(1.3);filter:brightness(1.6);}100%{transform:scale(1);filter:brightness(1);}}
+.pop{animation:coinPop .4s ease;}
+
+@media(max-width:480px){
+  .auth-card{padding:28px 18px 24px;}
+  .earn-grid{grid-template-columns:1fr;}
+  .bal-amt{font-size:2.5rem;}
+  .tpill{font-size:.75rem;}
+  th,td{padding:9px 9px;}
+  table{min-width:400px;font-size:.76rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="bg-wrap"></div>
+<div class="bg-grid"></div>
+
+<!-- ████████ PRIVACY POLICY PAGE ████████ -->
+<div class="policy-page" id="privacyPage">
+  <div class="policy-content">
+    <button class="btn btn-ghost btn-sm" style="margin-bottom:24px;" onclick="closePage('privacyPage')">← Wapas</button>
+    <h1>Privacy Policy</h1>
+    <p>Last updated: January 2025</p>
+
+    <h2>1. Information We Collect</h2>
+    <p>My Legal Earning App collects the following information when you register:</p>
+    <ul>
+      <li>Full name and email address</li>
+      <li>Account activity (coins earned, withdrawals requested)</li>
+      <li>UPI ID (only when you request withdrawal)</li>
+    </ul>
+
+    <h2>2. How We Use Your Information</h2>
+    <p>We use your information to:</p>
+    <ul>
+      <li>Create and manage your account</li>
+      <li>Process withdrawal requests</li>
+      <li>Improve our services</li>
+      <li>Send important account notifications</li>
+    </ul>
+
+    <h2>3. Google AdSense & Cookies</h2>
+    <p>This website uses Google AdSense to display advertisements. Google may use cookies to serve ads based on your prior visits to this website or other websites. You may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank">Google Ads Settings</a>.</p>
+    <p>Third-party vendors, including Google, use cookies to serve ads based on a user's prior visits to this website.</p>
+
+    <h2>4. Data Security</h2>
+    <p>Your data is stored securely in Google Firebase. We do not sell or share your personal information with third parties except as required by law.</p>
+
+    <h2>5. Children's Privacy</h2>
+    <p>This app is not intended for children under 13 years of age.</p>
+
+    <h2>6. Contact Us</h2>
+    <p>If you have questions about this Privacy Policy, contact us at: support@mylegalearnapp.com</p>
+  </div>
+</div>
+
+<!-- ████████ TERMS OF SERVICE PAGE ████████ -->
+<div class="policy-page" id="termsPage">
+  <div class="policy-content">
+    <button class="btn btn-ghost btn-sm" style="margin-bottom:24px;" onclick="closePage('termsPage')">← Wapas</button>
+    <h1>Terms of Service</h1>
+    <p>Last updated: January 2025</p>
+
+    <h2>1. Acceptance of Terms</h2>
+    <p>By using My Legal Earning App, you agree to these terms. If you do not agree, please do not use this app.</p>
+
+    <h2>2. About Coins</h2>
+    <ul>
+      <li>Coins are virtual rewards earned through app activities</li>
+      <li>Coins have no real monetary value until withdrawal is processed</li>
+      <li>Minimum withdrawal amount is 1000 coins</li>
+      <li>We reserve the right to adjust coin values</li>
+    </ul>
+
+    <h2>3. Prohibited Activities</h2>
+    <ul>
+      <li>Creating multiple accounts to abuse referral system</li>
+      <li>Using bots or automated tools</li>
+      <li>Clicking on ads fraudulently</li>
+      <li>Any form of cheating or manipulation</li>
+    </ul>
+
+    <h2>4. Withdrawal Terms</h2>
+    <p>Withdrawal requests are processed within 3-5 business days. We reserve the right to verify accounts before processing payments. Fraudulent accounts will be banned without payment.</p>
+
+    <h2>5. Advertisement Policy</h2>
+    <p>This app displays Google AdSense advertisements. You agree not to click on ads artificially or encourage others to do so. Ad fraud will result in immediate account termination.</p>
+
+    <h2>6. Termination</h2>
+    <p>We reserve the right to terminate accounts that violate these terms without prior notice.</p>
+
+    <h2>7. Contact</h2>
+    <p>Questions? Email us: support@mylegalearnapp.com</p>
+  </div>
+</div>
+
+<!-- ████████ AUTH SCREEN ████████ -->
+<div class="screen" id="authScreen">
+  <div style="position:relative;z-index:1;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px 16px;">
+    <div class="auth-card">
+      <div class="brand">
+        <div class="brand-ico">🪙</div>
+        <div>
+          <div class="brand-name">My Legal Earning App</div>
+          <div class="brand-tag">Coins kamao, withdraw karo</div>
+        </div>
+      </div>
+
+      <div class="alert" id="authAlert"></div>
+
+      <!-- LOGIN -->
+      <div id="loginForm">
+        <h2 class="auth-title">Wapas Aaye!</h2>
+        <p class="auth-sub">Sign in karein aur earning continue karein</p>
+        <div class="fgrp">
+          <label>Email Address</label>
+          <input type="email" id="lEmail" placeholder="aap@example.com" autocomplete="email"/>
+        </div>
+        <div class="fgrp">
+          <label>Password</label>
+          <input type="password" id="lPass" placeholder="••••••••" autocomplete="current-password"/>
+        </div>
+        <button class="btn btn-gold" id="loginBtn" onclick="doLogin()">Sign In</button>
+        <div class="sw-link">
+          Account nahi? <a href="#" onclick="showReg();return false;">Register karein</a>
+        </div>
+      </div>
+
+      <!-- REGISTER -->
+      <div id="regForm" style="display:none;">
+        <h2 class="auth-title">Account Banayein</h2>
+        <p class="auth-sub">Aaj se earning shuru karein — bilkul free</p>
+        <div class="fgrp">
+          <label>Pura Naam</label>
+          <input type="text" id="rName" placeholder="Aapka Naam" autocomplete="name"/>
+        </div>
+        <div class="fgrp">
+          <label>Email Address</label>
+          <input type="email" id="rEmail" placeholder="aap@example.com" autocomplete="email"/>
+        </div>
+        <div class="fgrp">
+          <label>Password <span style="text-transform:none;font-weight:400;font-size:.72rem;color:var(--m1);">(min 6 characters)</span></label>
+          <input type="password" id="rPass" placeholder="••••••••" autocomplete="new-password"/>
+        </div>
+        <div class="fgrp">
+          <label>Referral Code <span style="text-transform:none;font-weight:400;font-size:.72rem;color:var(--m1);">(optional)</span></label>
+          <input type="text" id="rRef" placeholder="e.g. A1B2C3" maxlength="6" class="ucase"/>
+        </div>
+        <button class="btn btn-gold" id="regBtn" onclick="doRegister()">Account Banayein</button>
+        <div class="sw-link" style="font-size:.75rem;margin-top:14px;">
+          Register karke aap hamari
+          <a href="#" onclick="openPage('termsPage');return false;">Terms of Service</a> aur
+          <a href="#" onclick="openPage('privacyPage');return false;">Privacy Policy</a> se agree karte hain.
+        </div>
+        <div class="sw-link">
+          Pehle se account hai? <a href="#" onclick="showLogin();return false;">Sign in karein</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ████████ DASHBOARD SCREEN ████████ -->
+<div class="screen hidden" id="dashScreen">
+
+  <nav class="topbar">
+    <div class="tb-brand">
+      <div class="brand-ico">🪙</div>
+      <div class="brand-name">MLEA</div>
+    </div>
+    <div class="tb-right">
+      <button class="npill" id="adminBtn" style="display:none" onclick="toggleAdmin()">⚙ Admin</button>
+      <button class="npill" onclick="doLogout()">Sign Out</button>
+    </div>
+  </nav>
+
+  <div class="dash-body">
+
+    <!-- Loading -->
+    <div id="loadDiv">
+      <div class="ring"></div>
+      <p style="color:var(--m1);font-size:.86rem;">Account load ho raha hai…</p>
+    </div>
+
+    <div id="dashMain" style="display:none;">
+
+      <!-- Balance Card -->
+      <div class="bal-card">
+        <div class="bal-lbl">Total Coins</div>
+        <div class="bal-amt">
+          <span class="bal-ico">🪙</span>
+          <span id="coinNum">0</span>
+        </div>
+        <div class="bal-row">
+          <div class="bal-usr">Namaste, <strong id="uName">—</strong></div>
+          <div class="bal-badge">💎 Active Member</div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════
+           ADSENSE AD — TOP BANNER
+           Apna ad-client aur ad-slot ID yahan daalo
+      ══════════════════════════════════════════ -->
+      <div class="ad-label">Advertisement</div>
+      <div class="ad-container ad-container-banner">
+        <ins class="adsbygoogle"
+             style="display:block;width:100%;min-height:50px;"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="1111111111"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <!-- Tab Bar -->
+      <div class="tab-bar">
+        <button class="tpill active" onclick="swTab('earn',this)">Earn</button>
+        <button class="tpill" onclick="swTab('ref',this)">Referral</button>
+        <button class="tpill" onclick="swTab('wd',this)">Withdraw</button>
+        <button class="tpill" onclick="swTab('hist',this)">History</button>
+      </div>
+
+      <!-- TAB: EARN -->
+      <div class="tsec show" id="tab-earn">
+        <div class="earn-grid">
+          <div class="ecard">
+            <span class="ec-ico">📺</span>
+            <div class="ec-ttl">Watch Ad</div>
+            <div class="ec-dsc">Ad dekhein aur coins kamayein</div>
+            <div class="coin-chip">🪙 +10 Coins</div>
+            <button class="btn btn-gold" id="adBtn" onclick="startAd()">Watch Ad</button>
+          </div>
+          <div class="ecard">
+            <span class="ec-ico">🎁</span>
+            <div class="ec-ttl">Daily Bonus</div>
+            <div class="ec-dsc">Roz ek baar claim karein</div>
+            <div class="coin-chip">🪙 +20 Coins</div>
+            <button class="btn btn-green" id="bonusBtn" onclick="claimBonus()">Claim Bonus</button>
+          </div>
+        </div>
+
+        <!-- ══ ADSENSE — MIDDLE RECTANGLE AD ══ -->
+        <div class="ad-label">Advertisement</div>
+        <div class="ad-container ad-container-rect">
+          <ins class="adsbygoogle"
+               style="display:block;"
+               data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+               data-ad-slot="2222222222"
+               data-ad-format="rectangle"
+               data-full-width-responsive="true"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+      </div>
+
+      <!-- TAB: REFERRAL -->
+      <div class="tsec" id="tab-ref">
+        <div class="ref-card">
+          <div class="sec-ttl">Aapka Referral Code</div>
+          <div class="sec-sub">Dosto ko share karein. Jab woh register karein, aapko <strong style="color:var(--gold);">50 coins</strong> milenge!</div>
+          <div class="ref-row">
+            <div class="ref-box" id="refCode">——</div>
+            <button class="btn btn-ghost btn-sm" onclick="copyCode()">📋 Copy</button>
+          </div>
+        </div>
+
+        <!-- ══ ADSENSE — REFERRAL TAB AD ══ -->
+        <div class="ad-label">Advertisement</div>
+        <div class="ad-container ad-container-banner" style="margin-bottom:14px;">
+          <ins class="adsbygoogle"
+               style="display:block;width:100%;"
+               data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+               data-ad-slot="3333333333"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <div class="how-card">
+          <div class="sec-ttl" style="margin-bottom:14px;">Kaise Kaam Karta Hai?</div>
+          <div class="how-step">
+            <div class="how-num">1</div>
+            <div><div class="ht">Code Share Karein</div><div class="hs">WhatsApp ya kahi bhi share karein</div></div>
+          </div>
+          <div class="how-step">
+            <div class="how-num">2</div>
+            <div><div class="ht">Dost Register Kare</div><div class="hs">Register karte waqt aapka code daale</div></div>
+          </div>
+          <div class="how-step">
+            <div class="how-num">3</div>
+            <div><div class="ht">50 Coins Milenge</div><div class="hs">Turant aapke account mein add</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB: WITHDRAW -->
+      <div class="tsec" id="tab-wd">
+        <div class="w-card">
+          <div class="sec-ttl">Withdrawal Request</div>
+          <div class="sec-sub">Request submit karein. 3-5 business days mein process hogi.</div>
+          <div class="min-badge">ℹ️ Minimum: 1000 Coins</div>
+          <div class="alert" id="wdAlert"></div>
+          <div class="fgrp">
+            <label>UPI ID</label>
+            <input type="text" id="upiId" placeholder="aapkanaam@upi"/>
+          </div>
+          <div class="fgrp">
+            <label>Coins Amount (min 1000)</label>
+            <input type="number" id="wdAmt" placeholder="1000" min="1000" step="100"/>
+          </div>
+          <button class="btn btn-gold" id="wdBtn" onclick="doWithdraw()">Submit Request</button>
+        </div>
+
+        <!-- ══ ADSENSE — WITHDRAW TAB AD ══ -->
+        <div class="ad-label">Advertisement</div>
+        <div class="ad-container ad-container-banner" style="margin-bottom:14px;">
+          <ins class="adsbygoogle"
+               style="display:block;width:100%;"
+               data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+               data-ad-slot="4444444444"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <div class="sub-h">Meri Requests</div>
+        <div class="hist-list" id="myWD">
+          <div class="empty"><span class="empty-ico">📭</span>Koi request nahi abhi tak.</div>
+        </div>
+      </div>
+
+      <!-- TAB: HISTORY -->
+      <div class="tsec" id="tab-hist">
+        <div class="sub-h" style="margin-bottom:12px;">Transaction History</div>
+        <div class="hist-list" id="txList">
+          <div class="empty"><span class="empty-ico">📊</span>Koi transaction nahi. Earning shuru karein!</div>
+        </div>
+      </div>
+
+    </div><!-- /dashMain -->
+
+    <!-- ADMIN PANEL -->
+    <div id="adminPanel" class="admin-wrap">
+      <div class="adm-hdr">
+        <button class="btn btn-ghost btn-sm" onclick="toggleAdmin()">← Wapas</button>
+        <h2 style="font-size:1.15rem;">Admin Panel</h2>
+        <button class="btn btn-ghost btn-sm" style="margin-left:auto;" onclick="loadAdmin()">🔄 Refresh</button>
+      </div>
+      <div class="sub-h">Saare Users</div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Naam</th><th>Email</th><th>Coins</th><th>Ref Code</th><th>Joined</th></tr></thead>
+          <tbody id="aUsers"><tr><td colspan="5" class="empty">Loading…</td></tr></tbody>
+        </table>
+      </div>
+      <div class="sub-h" style="margin-top:22px;">Withdrawal Requests</div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>User</th><th>UPI</th><th>Coins</th><th>Status</th><th>Date</th><th>Action</th></tr></thead>
+          <tbody id="aWD"><tr><td colspan="6" class="empty">Loading…</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer" id="dashFooter">
+      © 2025 My Legal Earning App &nbsp;|&nbsp;
+      <a href="#" onclick="openPage('privacyPage');return false;">Privacy Policy</a>
+      <a href="#" onclick="openPage('termsPage');return false;">Terms of Service</a>
+    </div>
+
+  </div><!-- /dash-body -->
+</div><!-- /dashScreen -->
+
+<!-- AD WATCH OVERLAY -->
+<div class="overlay" id="adOverlay">
+  <div class="ad-box">
+    <span class="ad-em">📺</span>
+    <h3 class="ad-ttl">Advertisement</h3>
+    <p class="ad-dsc">Ad dekh rahe hain…<br/>Khatam hone par <strong style="color:var(--gold);">+10 coins</strong> milenge!</p>
+
+    <!-- ══ ADSENSE AD INSIDE WATCH AD OVERLAY ══ -->
+    <div class="ad-real-slot">
+      <ins class="adsbygoogle"
+           style="display:block;"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+           data-ad-slot="5555555555"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="ad-timer" id="adCount">5</div>
+    <div class="ad-track"><div class="ad-bar" id="adBar"></div></div>
+    <button class="btn btn-ghost" id="adClose" disabled onclick="collectAd()">Please wait…</button>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<!-- ════ FIREBASE SDKs ════ -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+<script>
+/* ══════════════════════════════════════════
+   FIREBASE CONFIG
+══════════════════════════════════════════ */
+const firebaseConfig = {
+  apiKey:            "AIzaSyCDeM4l0_vBU4rZZxTnj0xJ7SBvQNlbeS4",
+  authDomain:        "my-earning-app-7ea2b.firebaseapp.com",
+  projectId:         "my-earning-app-7ea2b",
+  storageBucket:     "my-earning-app-7ea2b.firebasestorage.app",
+  messagingSenderId: "13123522352",
+  appId:             "1:13123522352:web:e00aac75e36a40e8d042f5",
+  measurementId:     "G-FYHWD0WVVF"
+};
+if(!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+const auth=firebase.auth();
+const db=firebase.firestore();
+db.enablePersistence({synchronizeTabs:true}).catch(e=>console.warn(e.code));
+
+/* ══ GLOBALS ══ */
+let CU=null,CD=null,UREF=null;
+
+/* ══ UTILS ══ */
+function genCode(uid){let n=0;for(let i=0;i<uid.length;i++)n=(n*31+uid.charCodeAt(i))>>>0;return n.toString(36).toUpperCase().padStart(6,'0').slice(0,6);}
+function validEmail(e){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);}
+function validUPI(u){return /^[a-zA-Z0-9.\-_]{2,256}@[a-zA-Z]{2,64}$/.test(u);}
+function today(){return new Date().toISOString().slice(0,10);}
+function fmtDate(ts){if(!ts)return 'Just now';return new Date(ts.toDate()).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'});}
+function esc(s){return String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
+function authErr(c){const m={'auth/email-already-in-use':'Yeh email pehle se registered hai.','auth/invalid-email':'Valid email daalen.','auth/user-not-found':'Is email ka account nahi mila.','auth/wrong-password':'Password galat hai.','auth/invalid-credential':'Email ya password galat hai.','auth/weak-password':'Password 6+ characters ka hona chahiye.','auth/too-many-requests':'Bahut attempts. Baad mein try karein.','auth/network-request-failed':'Network error. Internet check karein.'};return m[c]||'Kuch galat hua. Dobara try karein.';}
+function showAlert(msg,type,el){if(!el)el=document.getElementById('authAlert');el.className='alert '+(type==='ok'?'a-ok':'a-err')+' show';el.innerHTML=(type==='ok'?'✅ ':'⚠️ ')+esc(msg);}
+function clearAlt(el){if(el){el.className='alert';el.innerHTML='';}}
+let _ti;
+function toast(msg,ms=2800){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');clearTimeout(_ti);_ti=setTimeout(()=>el.classList.remove('show'),ms);}
+function setBtnLoad(btn,loading,lbl='Submit'){if(loading){btn.disabled=true;btn.innerHTML='<span class="sp"></span>&nbsp;Wait…';}else{btn.disabled=false;btn.textContent=lbl;}}
+
+/* ══ POLICY PAGES ══ */
+function openPage(id){document.getElementById(id).classList.add('show');}
+function closePage(id){document.getElementById(id).classList.remove('show');}
+
+/* ══ AUTH STATE ══ */
+auth.onAuthStateChanged(async user=>{
+  if(user){CU=user;UREF=db.collection('users').doc(user.uid);showScreen('dash');await loadUser();}
+  else showScreen('auth');
+});
+function showScreen(s){
+  document.getElementById('authScreen').classList.toggle('hidden',s!=='auth');
+  document.getElementById('dashScreen').classList.toggle('hidden',s!=='dash');
+}
+
+/* ══ FORM TOGGLE ══ */
+function showReg(){document.getElementById('loginForm').style.display='none';document.getElementById('regForm').style.display='block';clearAlt(document.getElementById('authAlert'));}
+function showLogin(){document.getElementById('regForm').style.display='none';document.getElementById('loginForm').style.display='block';clearAlt(document.getElementById('authAlert'));}
+
+/* ══ LOGIN ══ */
+async function doLogin(){
+  const email=document.getElementById('lEmail').value.trim();
+  const pass=document.getElementById('lPass').value;
+  const al=document.getElementById('authAlert');
+  const btn=document.getElementById('loginBtn');
+  clearAlt(al);
+  if(!email||!pass)return showAlert('Email aur password dono bharen.',null,al);
+  if(!validEmail(email))return showAlert('Valid email daalen.',null,al);
+  setBtnLoad(btn,true);
+  try{await auth.signInWithEmailAndPassword(email,pass);}
+  catch(e){setBtnLoad(btn,false,'Sign In');showAlert(authErr(e.code),null,al);}
+}
+
+/* ══ REGISTER ══ */
+async function doRegister(){
+  const name=document.getElementById('rName').value.trim();
+  const email=document.getElementById('rEmail').value.trim();
+  const pass=document.getElementById('rPass').value;
+  const ref=document.getElementById('rRef').value.trim().toUpperCase();
+  const al=document.getElementById('authAlert');
+  const btn=document.getElementById('regBtn');
+  clearAlt(al);
+  if(!name)return showAlert('Apna naam daalen.',null,al);
+  if(!email||!validEmail(email))return showAlert('Valid email daalen.',null,al);
+  if(pass.length<6)return showAlert('Password 6+ characters ka hona chahiye.',null,al);
+  setBtnLoad(btn,true);
+  try{
+    const cred=await auth.createUserWithEmailAndPassword(email,pass);
+    const uid=cred.user.uid;
+    const myCode=genCode(uid);
+    await db.collection('users').doc(uid).set({name,email,coins:0,referralCode:myCode,referredBy:ref||null,lastBonus:null,isAdmin:false,createdAt:firebase.firestore.FieldValue.serverTimestamp()});
+    if(ref)await rewardRef(ref,uid);
+  }catch(e){setBtnLoad(btn,false,'Account Banayein');showAlert(authErr(e.code),null,al);}
+}
+
+async function rewardRef(code,newUid){
+  try{
+    const snap=await db.collection('users').where('referralCode','==',code).limit(1).get();
+    if(snap.empty)return;
+    const rid=snap.docs[0].id;
+    if(rid===newUid)return;
+    await db.runTransaction(async tx=>{const r=db.collection('users').doc(rid);const d=await tx.get(r);tx.update(r,{coins:(d.data().coins||0)+50});});
+    await db.collection('transactions').add({userId:rid,type:'referral',amount:50,note:'Referral bonus',createdAt:firebase.firestore.FieldValue.serverTimestamp()});
+  }catch(e){console.warn('Ref reward failed:',e);}
+}
+
+/* ══ LOGOUT ══ */
+async function doLogout(){try{await auth.signOut();}catch(e){toast('Sign out nahi hua.',3500);}}
+
+/* ══ LOAD USER ══ */
+async function loadUser(){
+  try{
+    const doc=await UREF.get();
+    if(!doc.exists){toast('Data nahi mila!',4000);await auth.signOut();return;}
+    CD=doc.data();
+    renderDash(CD);
+    document.getElementById('loadDiv').style.display='none';
+    document.getElementById('dashMain').style.display='block';
+    if(CD.isAdmin)document.getElementById('adminBtn').style.display='block';
+    loadTx();loadMyWD();
+  }catch(e){console.error('loadUser:',e);toast('Data load error.',4000);}
+}
+
+function renderDash(d){
+  document.getElementById('coinNum').textContent=d.coins||0;
+  document.getElementById('uName').textContent=d.name||'User';
+  document.getElementById('refCode').textContent=d.referralCode||'——';
+  const btn=document.getElementById('bonusBtn');
+  if(d.lastBonus===today()){btn.disabled=true;btn.textContent='✅ Aaj Claim Ho Gaya';}
+  else{btn.disabled=false;btn.textContent='Claim Bonus';}
+}
+
+/* ══ WATCH AD ══ */
+const AD_SEC=5;let adInt=null;
+function startAd(){
+  const bar=document.getElementById('adBar');
+  const cnt=document.getElementById('adCount');
+  const cls=document.getElementById('adClose');
+  let el=0;
+  cnt.textContent=AD_SEC;bar.style.transition='none';bar.style.width='0%';
+  cls.disabled=true;cls.className='btn btn-ghost';cls.textContent='Please wait…';
+  document.getElementById('adOverlay').classList.add('show');
+  void bar.offsetWidth;bar.style.transition='width 1s linear';
+  adInt=setInterval(()=>{
+    el++;cnt.textContent=AD_SEC-el;bar.style.width=(el/AD_SEC*100)+'%';
+    if(el>=AD_SEC){clearInterval(adInt);cls.disabled=false;cls.innerHTML='🎉 Collect 10 Coins';cls.className='btn btn-gold';}
+  },1000);
+}
+async function collectAd(){
+  document.getElementById('adOverlay').classList.remove('show');
+  clearInterval(adInt);
+  const btn=document.getElementById('adBtn');
+  setBtnLoad(btn,true);
+  try{await addCoins(10,'ad_watch','Ad dekhi');toast('🪙 +10 coins mile!');popCoins();}
+  catch(e){toast('Coins nahi mile.',3500);}
+  finally{setBtnLoad(btn,false,'Watch Ad');}
+}
+
+/* ══ DAILY BONUS ══ */
+async function claimBonus(){
+  const btn=document.getElementById('bonusBtn');
+  setBtnLoad(btn,true);
+  try{
+    await db.runTransaction(async tx=>{
+      const snap=await tx.get(UREF);const d=snap.data();
+      if(d.lastBonus===today())throw new Error('CLAIMED');
+      tx.update(UREF,{coins:(d.coins||0)+20,lastBonus:today()});
+    });
+    await db.collection('transactions').add({userId:CU.uid,type:'daily_bonus',amount:20,note:'Daily bonus',createdAt:firebase.firestore.FieldValue.serverTimestamp()});
+    toast('🎁 +20 coins! Daily bonus claim ho gaya!');
+    btn.disabled=true;btn.textContent='✅ Aaj Claim Ho Gaya';
+    popCoins();await refreshCoins();loadTx();
+  }catch(e){
+    if(e.message==='CLAIMED'){toast('Aaj ka bonus pehle hi claim ho chuka!',3500);btn.disabled=true;btn.textContent='✅ Aaj Claim Ho Gaya';}
+    else{toast('Bonus claim nahi hua.',3500);console.error(e);}
+    setBtnLoad(btn,false,'Claim Bonus');
+  }
+}
+
+/* ══ WITHDRAW ══ */
+async function doWithdraw(){
+  const upi=document.getElementById('upiId').value.trim();
+  const amt=parseInt(document.getElementById('wdAmt').value,10);
+  const al=document.getElementById('wdAlert');
+  const btn=document.getElementById('wdBtn');
+  clearAlt(al);
+  if(!upi)return showAlert('UPI ID daalen.',null,al);
+  if(!validUPI(upi))return showAlert('UPI format galat hai. Example: naam@upi',null,al);
+  if(!amt||isNaN(amt)||amt<1000)return showAlert('Minimum 1000 coins withdraw kar sakte hain.',null,al);
+  setBtnLoad(btn,true);
+  try{
+    const snap=await UREF.get();const d=snap.data();
+    if((d.coins||0)<amt){showAlert(`Sirf ${d.coins} coins hain.`,null,al);setBtnLoad(btn,false,'Submit Request');return;}
+    await db.runTransaction(async tx=>{const ds=await tx.get(UREF);const c=ds.data().coins||0;if(c<amt)throw new Error('LOW');tx.update(UREF,{coins:c-amt});});
+    await db.collection('withdrawals').add({userId:CU.uid,userName:d.name,userEmail:d.email,upiId:upi,amount:amt,status:'pending',createdAt:firebase.firestore.FieldValue.serverTimestamp()});
+    await db.collection('transactions').add({userId:CU.uid,type:'withdrawal',amount:-amt,note:'Withdrawal — UPI: '+upi,createdAt:firebase.firestore.FieldValue.serverTimestamp()});
+    showAlert('Request submit ho gayi! 3-5 days mein process hogi.','ok',al);
+    document.getElementById('upiId').value='';document.getElementById('wdAmt').value='';
+    await refreshCoins();loadMyWD();loadTx();
+  }catch(e){
+    if(e.message==='LOW')showAlert('Coins kam hain.',null,al);
+    else showAlert('Submit nahi hua. Dobara try karein.',null,al);
+    console.error(e);
+  }finally{setBtnLoad(btn,false,'Submit Request');}
+}
+
+/* ══ REFERRAL ══ */
+function copyCode(){const c=document.getElementById('refCode').textContent;if(!c||c==='——')return;navigator.clipboard.writeText(c).then(()=>toast('📋 Code copy ho gaya!')).catch(()=>toast('Code: '+c,4000));}
+
+/* ══ HISTORY ══ */
+async function loadTx(){
+  const el=document.getElementById('txList');
+  try{
+    const snap=await db.collection('transactions').where('userId','==',CU.uid).orderBy('createdAt','desc').limit(25).get();
+    if(snap.empty)return;
+    const map={ad_watch:{i:'📺',l:'Ad Watch Bonus',c:'ig'},daily_bonus:{i:'🎁',l:'Daily Bonus',c:'ig'},referral:{i:'🤝',l:'Referral Bonus',c:'iv'},withdrawal:{i:'💸',l:'Withdrawal',c:'ir'}};
+    let h='';
+    snap.forEach(doc=>{const tx=doc.data();const t=map[tx.type]||{i:'🪙',l:tx.type||'Transaction',c:'ig'};const pos=tx.amount>=0;h+=`<div class="hi"><div class="h-ico ${t.c}">${t.i}</div><div class="h-meta"><div class="h-ttl">${t.l}</div><div class="h-dt">${fmtDate(tx.createdAt)}</div></div><div class="h-amt ${pos?'plus':'minus'}">${pos?'+':''}${tx.amount} 🪙</div></div>`;});
+    el.innerHTML=h;
+  }catch(e){console.error('loadTx:',e);}
+}
+async function loadMyWD(){
+  const el=document.getElementById('myWD');
+  try{
+    const snap=await db.collection('withdrawals').where('userId','==',CU.uid).orderBy('createdAt','desc').limit(10).get();
+    if(snap.empty)return;
+    let h='';
+    snap.forEach(doc=>{const w=doc.data();const bc=w.status==='approved'?'ba':w.status==='rejected'?'br':'bp';h+=`<div class="hi"><div class="h-ico ir">💸</div><div class="h-meta"><div class="h-ttl">${esc(w.upiId)}</div><div class="h-dt">${fmtDate(w.createdAt)}</div></div><div style="display:flex;flex-direction:column;align-items:flex-end;gap:5px;"><div class="h-amt minus">-${w.amount} 🪙</div><span class="badge ${bc}">${w.status}</span></div></div>`;});
+    el.innerHTML=h;
+  }catch(e){console.error('loadMyWD:',e);}
+}
+
+/* ══ ADMIN ══ */
+function toggleAdmin(){const dm=document.getElementById('dashMain');const ap=document.getElementById('adminPanel');const ab=document.getElementById('adminBtn');if(ap.classList.contains('show')){ap.classList.remove('show');dm.style.display='block';ab.classList.remove('active');}else{dm.style.display='none';ap.classList.add('show');ab.classList.add('active');loadAdmin();}}
+async function loadAdmin(){
+  if(!CD?.isAdmin)return;
+  try{const snap=await db.collection('users').orderBy('createdAt','desc').limit(50).get();let r='';snap.forEach(doc=>{const u=doc.data();r+=`<tr><td>${esc(u.name||'—')}</td><td style="font-size:.78rem;">${esc(u.email||'—')}</td><td>🪙${u.coins||0}</td><td><span style="font-family:monospace;color:var(--gold);font-size:.82rem;">${esc(u.referralCode||'—')}</span></td><td>${fmtDate(u.createdAt)}</td></tr>`;});document.getElementById('aUsers').innerHTML=r||'<tr><td colspan="5" class="empty">Koi user nahi.</td></tr>';}catch(e){console.error(e);}
+  try{const snap=await db.collection('withdrawals').orderBy('createdAt','desc').limit(50).get();let r='';snap.forEach(doc=>{const w=doc.data();const wid=doc.id;const bc=w.status==='approved'?'ba':w.status==='rejected'?'br':'bp';const act=w.status==='pending'?`<button class="btn btn-green btn-sm" style="margin-right:4px;padding:6px 10px;" onclick="setWS('${wid}','approved')">✓</button><button class="btn btn-red btn-sm" style="padding:6px 10px;" onclick="setWS('${wid}','rejected')">✗</button>`:'—';r+=`<tr><td>${esc(w.userName||'—')}</td><td style="font-size:.78rem;">${esc(w.upiId||'—')}</td><td>🪙${w.amount}</td><td><span class="badge ${bc}">${w.status}</span></td><td>${fmtDate(w.createdAt)}</td><td>${act}</td></tr>`;});document.getElementById('aWD').innerHTML=r||'<tr><td colspan="6" class="empty">Koi request nahi.</td></tr>';}catch(e){console.error(e);}
+}
+async function setWS(id,status){if(!CD?.isAdmin)return;try{await db.collection('withdrawals').doc(id).update({status});toast('Request '+status+' kar di gayi.');loadAdmin();}catch(e){toast('Update nahi hua.',3500);}}
+
+/* ══ COIN HELPERS ══ */
+async function addCoins(amt,type,note){await db.runTransaction(async tx=>{const d=await tx.get(UREF);tx.update(UREF,{coins:(d.data().coins||0)+amt});});await db.collection('transactions').add({userId:CU.uid,type,amount:amt,note,createdAt:firebase.firestore.FieldValue.serverTimestamp()});await refreshCoins();loadTx();}
+async function refreshCoins(){const doc=await UREF.get();CD=doc.data();document.getElementById('coinNum').textContent=CD.coins||0;}
+function popCoins(){const el=document.getElementById('coinNum');el.classList.remove('pop');void el.offsetWidth;el.classList.add('pop');}
+
+/* ══ TABS ══ */
+function swTab(name,btn){document.querySelectorAll('.tsec').forEach(s=>s.classList.remove('show'));document.querySelectorAll('.tpill').forEach(b=>b.classList.remove('active'));document.getElementById('tab-'+name).classList.add('show');btn.classList.add('active');}
+
+/* ══ ENTER KEY ══ */
+document.addEventListener('keydown',e=>{if(e.key!=='Enter')return;const lf=document.getElementById('loginForm');if(lf.style.display!=='none')doLogin();else doRegister();});
+</script>
+</body>
+</html>
